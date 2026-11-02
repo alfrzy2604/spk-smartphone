@@ -1,54 +1,36 @@
-# Vercel + Aiven - SPK Smartphone
+# Sistem Pendukung Keputusan (SPK) Pemilihan Smartphone - Metode SAW
 
-Proyek ini telah dikonfigurasi untuk di-deploy ke Vercel dengan database Aiven MySQL.
+Aplikasi berbasis web yang dirancang untuk membantu proses pengambilan keputusan dalam memilih smartphone terbaik. Proyek ini dibuat sebagai tugas akhir (Skripsi) dengan studi kasus pada Jhonophone Cell. 
 
-## Struktur Folder
+Aplikasi ini menggunakan metode **Simple Additive Weighting (SAW)** untuk melakukan perangkingan berdasarkan kriteria dan bobot yang telah ditentukan.
 
-```
-/
-├── api/                    ← Semua file PHP (serverless functions)
-│   ├── Koneksi.php         ← Koneksi DB (env vars / localhost)
-│   ├── session_handler.php ← Session berbasis database
-│   ├── index.php
-│   ├── Login.php
-│   ├── logout.php
-│   └── ... (semua file PHP lainnya)
-├── dashboard.css           ← File statis (CSS & gambar)
-├── login.css
-├── style.css
-├── logo1.jpeg
-├── fototoko.jpeg
-├── vercel.json             ← Konfigurasi routing Vercel
-├── .env.example            ← Referensi environment variables
-└── db_spkta.sql            ← SQL dump untuk import ke Aiven
-```
+## Fitur Utama
 
-## Langkah Deploy
+- Autentikasi Admin: Sistem login yang aman untuk membatasi akses ke dalam sistem.
+- Manajemen Data Master:
+  - CRUD (Create, Read, Update, Delete) Data Alternatif (Smartphone).
+  - CRUD Data Kriteria (Chipset, RAM, Storage, dll).
+  - CRUD Data Subkriteria (Bobot nilai untuk setiap kriteria).
+- Manajemen Normalisasi: Pengelolaan data nilai alternatif berdasarkan kriteria.
+- Perhitungan Otomatis: Menghitung matriks keputusan, normalisasi, dan nilai preferensi secara otomatis menggunakan metode SAW.
+- Perangkingan: Menampilkan hasil urutan smartphone terbaik berdasarkan nilai tertinggi.
+- Cetak Laporan: Fitur untuk mencetak data alternatif, kriteria, dan hasil perangkingan (format cetak ramah printer).
 
-### 1. Buat Database di Aiven
-1. Daftar/login di [aiven.io](https://aiven.io)
-2. Buat service **MySQL**
-3. Catat: Host, Port, Username, Password
-4. Download file **CA Certificate** (`ca.pem`)
-5. Import `db_spkta.sql` ke Aiven menggunakan MySQL client:
-   ```
-   mysql -h HOST -P PORT -u avnadmin -p --ssl-ca=ca.pem db_spkta < db_spkta.sql
-   ```
+## Teknologi yang Digunakan
 
-### 2. Deploy ke Vercel
-1. Push proyek ini ke GitHub
-2. Di [vercel.com](https://vercel.com), import repository tersebut
-3. Tambahkan **Environment Variables** di Settings:
-   - `DB_HOST` = host dari Aiven
-   - `DB_PORT` = port dari Aiven
-   - `DB_USER` = username dari Aiven (biasanya `avnadmin`)
-   - `DB_PASS` = password dari Aiven
-   - `DB_NAME` = `db_spkta`
-   - `DB_SSL` = `true`
-4. Deploy!
+- Bahasa Pemrograman: PHP (Native)
+- Database: MySQL
+- Frontend: HTML, CSS, JavaScript
+- Web Server (Lokal): Apache (XAMPP/Laragon)
 
-### 3. Untuk Development Lokal (XAMPP)
-Proyek ini tetap bisa dijalankan di XAMPP tanpa perubahan:
-- Jika environment variables tidak diset, otomatis menggunakan `localhost` / `root` / tanpa password
-- File `api/Koneksi.php` mendeteksi otomatis
+## Cara Menjalankan Secara Lokal
 
+Ikuti langkah-langkah berikut untuk menjalankan proyek ini di komputer Anda:
+
+1. Persiapan
+   Pastikan Anda sudah menginstal XAMPP atau Laragon di komputer Anda.
+
+2. Clone / Download Repository
+   Unduh kode ini dengan cara klik tombol `Code` > `Download ZIP`, atau gunakan perintah terminal:
+   ```bash
+   git clone https://github.com/username-anda/nama-repo.git
