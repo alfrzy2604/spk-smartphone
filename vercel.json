@@ -1,42 +1,24 @@
 {
+  "version": 2,
   "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.7.3"
+    "api/index.php": {
+      "runtime": "vercel-php@0.9.0",
+      "memory": 1024,
+      "maxDuration": 15
     }
   },
   "routes": [
-    { "src": "/dashboard\\.css", "dest": "/dashboard.css" },
-    { "src": "/login\\.css", "dest": "/login.css" },
-    { "src": "/style\\.css", "dest": "/style.css" },
-    { "src": "/logo1\\.jpeg", "dest": "/logo1.jpeg" },
-    { "src": "/fototoko\\.jpeg", "dest": "/fototoko.jpeg" },
-    { "src": "^/$", "dest": "/api/index.php" },
-    { "src": "^/index\\.php$", "dest": "/api/index.php" },
-    { "src": "^/Login\\.php$", "dest": "/api/Login.php" },
-    { "src": "^/login\\.php$", "dest": "/api/Login.php" },
-    { "src": "^/logout\\.php$", "dest": "/api/logout.php" },
-    { "src": "^/alternatif\\.php$", "dest": "/api/alternatif.php" },
-    { "src": "^/alternatif_edit\\.php$", "dest": "/api/alternatif_edit.php" },
-    { "src": "^/alternatif_hapus\\.php$", "dest": "/api/alternatif_hapus.php" },
-    { "src": "^/alternatif_tambah\\.php$", "dest": "/api/alternatif_tambah.php" },
-    { "src": "^/kriteria\\.php$", "dest": "/api/kriteria.php" },
-    { "src": "^/kriteria_edit\\.php$", "dest": "/api/kriteria_edit.php" },
-    { "src": "^/kriteria_hapus\\.php$", "dest": "/api/kriteria_hapus.php" },
-    { "src": "^/kriteria_tambah\\.php$", "dest": "/api/kriteria_tambah.php" },
-    { "src": "^/subkriteria\\.php$", "dest": "/api/subkriteria.php" },
-    { "src": "^/subkriteria_edit\\.php$", "dest": "/api/subkriteria_edit.php" },
-    { "src": "^/subkriteria_hapus\\.php$", "dest": "/api/subkriteria_hapus.php" },
-    { "src": "^/subkriteria_tambah\\.php$", "dest": "/api/subkriteria_tambah.php" },
-    { "src": "^/normalisasi\\.php$", "dest": "/api/normalisasi.php" },
-    { "src": "^/normalisasi_edit\\.php$", "dest": "/api/normalisasi_edit.php" },
-    { "src": "^/normalisasi_hapus\\.php$", "dest": "/api/normalisasi_hapus.php" },
-    { "src": "^/normalisasi_tambah\\.php$", "dest": "/api/normalisasi_tambah.php" },
-    { "src": "^/perhitungan\\.php$", "dest": "/api/perhitungan.php" },
-    { "src": "^/cetak_alternatif\\.php$", "dest": "/api/cetak_alternatif.php" },
-    { "src": "^/cetak_kriteria\\.php$", "dest": "/api/cetak_kriteria.php" },
-    { "src": "^/cetak_perhitungan\\.php$", "dest": "/api/cetak_perhitungan.php" },
-    { "src": "^/cetak_subkriteria\\.php$", "dest": "/api/cetak_subkriteria.php" },
-    { "src": "/(.*)", "dest": "/api/$1" }
+    {
+      "src": "/(dashboard|login|style)\\.css",
+      "dest": "/$1.css"
+    },
+    {
+      "src": "/(logo1|fototoko)\\.jpeg",
+      "dest": "/$1.jpeg"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
   ]
 }
-
