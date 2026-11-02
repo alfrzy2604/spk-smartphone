@@ -1,4 +1,5 @@
 <?php
+ob_start();
 /**
  * Front Controller & Router untuk Vercel Serverless
  */
@@ -91,4 +92,3 @@ if (strcasecmp($filename, 'login.php') === 0 && file_exists(__DIR__ . '/Login.ph
 // 4. Default fallback: arahkan ke Login.php
 header("Location: Login.php");
 exit;
-?>
